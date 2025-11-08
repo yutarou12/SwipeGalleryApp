@@ -1,8 +1,8 @@
 node_modules
-./dist
-./build
+dist
+build
 
 .env
 
-./public/data
-./public/gallery.json
+public/data
+public/gallery.json
