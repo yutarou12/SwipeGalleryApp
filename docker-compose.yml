@@ -1,4 +1,3 @@
-version: '3.8'
 services:
   web:
     build: .
@@ -8,4 +7,4 @@ services:
     restart: unless-stopped
     # Optional: mount local data for live editing of public/data
     volumes:
-      - ./public/data:/usr/share/nginx/html/data:ro
+      - ./public:/usr/share/nginx/html:ro
