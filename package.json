@@ -1,0 +1,28 @@
+{
+  "name": "swipe-gallery-app",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "generate-manifest": "node scripts/generate-manifest.js",
+    "start": "npm run generate-manifest && vite",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "@mui/material": "^5.14.0",
+    "@emotion/react": "^11.11.0",
+    "@emotion/styled": "^11.11.0"
+  },
+  "optionalDependencies": {
+    "@mui/icons-material": "^5.14.0"
+  },
+  "devDependencies": {
+    "vite": "^5.0.0",
+    "typescript": "^5.0.0",
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0"
+  }
+}

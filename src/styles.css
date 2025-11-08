@@ -1,0 +1,89 @@
+body {
+  font-family: Roboto, sans-serif;
+  background: #f5f5f5;
+}
+#root {
+  min-height: 100vh;
+}
+
+.lightboxHeader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 56px; /* header を少し大きめに */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 12px;
+  background: rgba(22,22,22,0.95);
+  color: white;
+  z-index: 50;
+}
+.lightboxHeader-left { display:flex; align-items:center; gap:12px }
+.lightboxTitle { font-weight:600 }
+.lightboxNav { display:flex; align-items:center }
+.lightboxHeader-right { display:flex; align-items:center; gap:16px }
+
+/* Page セレクト（ページリスト）を大きく見やすくする */
+.lightboxPage select {
+  height: 36px; /* 長く太く見える高さ */
+  min-width: 84px; /* 幅を確保 */
+  padding: 4px 8px;
+  font-size: 14px;
+  background: rgba(255,255,255,0.06);
+  color: #ffffff; /* 文字色を白にして見やすく */
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 6px;
+  outline: none;
+}
+
+
+
+.lightboxPage select:focus {
+  box-shadow: 0 0 0 3px rgba(255,255,255,0.04);
+}
+
+/* ドロップダウン内の option を見やすく色分けする */
+.lightboxPage select option {
+  color: #000; /* 未選択の option は黒文字 */
+  background: #fff; /* 白背景 */
+}
+.lightboxPage select option:checked,
+.lightboxPage select option[selected] {
+  color: #fff; /* 選択中は白文字 */
+  background: #333; /* ダークグレー背景 */
+}
+.lightboxPage select option:nth-child(odd) {
+  background: #ffffff; /* 行ごとに色分けしたい場合のベース */
+}
+.lightboxPage select option:nth-child(even) {
+  background: #f0f0f0; /* 偶数行は薄いグレー */
+}
+
+.lightboxClickZone {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 20%;
+  z-index: 40;
+}
+.lightboxClickZone.left { left: 0 }
+.lightboxClickZone.right { right: 0 }
+
+.lightboxImageWrap {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 30;
+}
+.lightboxImage {
+  max-width: 100vw;
+  max-height: 100vh;
+  width: 100vw;
+  height: 100vh;
+  object-fit: contain;
+  display: block;
+}
