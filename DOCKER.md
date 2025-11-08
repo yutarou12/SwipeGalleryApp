@@ -4,7 +4,7 @@ Docker でローカル公開する手順
 このリポジトリには Docker でローカル公開するためのファイルが含まれています:
 
 - `Dockerfile` - マルチステージでビルドして nginx で配信します。
-- `docker-compose.yml` - 簡単にビルド & 起動するための compose 設定。
+- `docker-compose.yml` - 簡単にビルド & 起動するための compose 設定（`docker compose` で使用します）。
 - `nginx/default.conf` - SPA のフォールバックを有効にする nginx 設定。
 
 使い方（簡易）:
@@ -16,10 +16,10 @@ docker build -t swipe-gallery-app .
 docker run --rm -p 5173:80 swipe-gallery-app
 ```
 
-2) docker-compose を使う（推奨）:
+2) `docker compose` を使う（推奨）:
 
 ```pwsh
-docker-compose up --build
+docker compose up --build
 ```
 
 ポイント:
