@@ -4,7 +4,7 @@ FROM node:18-alpine AS builder
 WORKDIR /app
 
 # Install dependencies
-COPY package.json package-lock.json* ./ AND 
+COPY package.json package-lock.json* ./ 
 RUN npm install --production=false
 
 # Copy source and build
