@@ -27,3 +27,10 @@ npm run start
 注意:
 - `public/data` が空の場合、起動スクリプトがサンプル画像を自動作成します。
 - 画像を追加したあと `npm run generate-manifest` を実行して `gallery.json` を更新してください。
+
+## gallery.json更新
+
+```pwsh
+docker run -v ./:/app -w /app node:18-alpine node scripts/generate-manifest.js
+docker cp public/gallery.json <name>:/usr/share/nginx/html/gallery.json
+```
