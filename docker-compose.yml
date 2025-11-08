@@ -7,4 +7,4 @@ services:
     restart: unless-stopped
     # Optional: mount local data for live editing of public/data
     volumes:
-      - ./public:/usr/share/nginx/html:ro
+      - ./public/data:/usr/share/nginx/html/data:ro
