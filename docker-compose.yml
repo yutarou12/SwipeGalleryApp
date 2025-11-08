@@ -3,7 +3,7 @@ services:
   web:
     build: .
     ports:
-      - "80:5173" # map host 80 -> container 5173 (so same port as vite dev if desired)
+      - "5173:80" # map host 5173 -> container 80 (so same port as vite dev if desired)
     restart: unless-stopped
     # Optional: mount local data for live editing of public/data
     volumes:
