@@ -2,6 +2,8 @@
 
 ローカル使用のためのシンプルな画像ギャラリー (Typescript + React + Vite + MUI)
 
+![Top image](/README/image.png)
+
 特徴:
 - `public/data/<num>/` に配置した画像をフォルダごとに一覧表示
 - フォルダをクリックすると画像を名前順でプレビュー・左右スワイプ可能
