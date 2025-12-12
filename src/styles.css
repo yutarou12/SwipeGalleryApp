@@ -87,3 +87,14 @@ body {
   object-fit: contain;
   display: block;
 }
+
+@media (min-width: 560px) {
+  .lightboxImageWrap {
+    margin-top: 64px; /* Ensure the image is below the header */
+  }
+
+  .lightboxImage {
+    max-width: 80vw; /* Adjust image size for desktop */
+    max-height: 90vh;
+  }
+}
