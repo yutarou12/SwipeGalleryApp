@@ -4,3 +4,4 @@ npm-debug.log
 .git
 .env
 .DS_Store
+public/data
