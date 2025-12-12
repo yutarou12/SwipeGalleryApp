@@ -26,8 +26,10 @@ const result = {}
 for (const folderName of fs.readdirSync(dataDir)) {
   const folderPath = path.join(dataDir, folderName)
   if (!fs.statSync(folderPath).isDirectory()) continue
-  const files = fs.readdirSync(folderPath).filter(isImage).map(f => path.posix.join('/data', folderName, f))
-  files.sort()
+  const files = fs.readdirSync(folderPath)
+    .filter(isImage)
+    .map(f => path.posix.join('/data', folderName, f))
+  files.sort((a, b) => a.localeCompare(b, undefined, { numeric: true, sensitivity: 'base' }))
   if (files.length) result[folderName] = files
 }
 
