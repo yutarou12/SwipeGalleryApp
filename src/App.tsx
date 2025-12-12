@@ -93,6 +93,10 @@ function Lightbox({ open, images, index, onClose, onPrev, onNext }: any) {
   )
 }
 
+const naturalSort = (a: string, b: string) => {
+  return a.localeCompare(b, undefined, { numeric: true, sensitivity: 'base' });
+};
+
 export default function App() {
   const [gallery, setGallery] = useState<Gallery>({})
   const [openFolder, setOpenFolder] = useState<string | null>(null)
@@ -103,7 +107,7 @@ export default function App() {
       .then(r => r.json())
       .then((data: Gallery) => {
         // 画像リストは名前順にソートする
-        Object.keys(data).forEach(k => data[k].sort())
+        Object.keys(data).forEach(k => data[k].sort(naturalSort));
         setGallery(data)
       })
       .catch(err => console.error('gallery.json 読み込み失敗', err))
@@ -133,8 +137,11 @@ export default function App() {
       const endX = e.changedTouches[0].clientX
       const diff = endX - startX
       if (Math.abs(diff) > 40) {
-        if (diff > 0) prev()
-        else next()
+        if (diff > 0) {
+          prev();
+        } else {
+          next();
+        }
       }
     }
     if (openFolder) {
@@ -145,10 +152,10 @@ export default function App() {
       window.removeEventListener('touchstart', onTouchStart)
       window.removeEventListener('touchend', onTouchEnd)
     }
-  }, [openFolder, images.length])
+  }, [openFolder, prev, next])
 
   return (
-    <Container style={{ padding: 20 }}>
+    <Container maxWidth="lg" style={{ marginTop: 24, marginBottom: 24 }}>
       <Typography variant="h4" gutterBottom>ローカル画像館</Typography>
       <FolderGrid gallery={gallery} onOpen={open} />
       <Lightbox open={!!openFolder} images={images} index={idx} onClose={close} onPrev={prev} onNext={next} />
