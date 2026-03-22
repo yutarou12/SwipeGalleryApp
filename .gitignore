@@ -6,3 +6,8 @@ build
 
 public/data
 public/gallery.json
+
+api/label_data.json
+api/label_options.json
+
+.idea

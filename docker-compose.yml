@@ -1,6 +1,8 @@
 services:
   web:
     build: .
+    depends_on:
+      - api
     ports:
       - "5173:80" # map host 5173 -> container 80 (so same port as vite dev if desired)
       - "80:80"   # also expose container port 80 on host port 80 for direct access via host IP
@@ -8,3 +10,13 @@ services:
     # Optional: mount local data for live editing of public/data
     volumes:
       - ./public/data:/usr/share/nginx/html/data:ro
+
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    ports:
+      - "8787:8787"
+    restart: unless-stopped
+    volumes:
+      - ./api/label_data.json:/app/label_data.json
