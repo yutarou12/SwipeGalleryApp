@@ -10,6 +10,9 @@ services:
     # Optional: mount local data for live editing of public/data
     volumes:
       - ./public/data:/usr/share/nginx/html/data:ro
+    networks:
+      - app-network
+  
 
   api:
     build:
@@ -20,3 +23,9 @@ services:
     restart: unless-stopped
     volumes:
       - ./api/label_data.json:/app/label_data.json
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
