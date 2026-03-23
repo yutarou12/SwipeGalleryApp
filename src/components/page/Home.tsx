@@ -208,10 +208,6 @@ function SettingBox({ open, onClose, onSaved }: { open: boolean; onClose: () => 
 
   function addLabelOption() {
     const next = newLabel.trim().toUpperCase()
-    if (!/^[A-Z]$/.test(next)) {
-      setError('ラベルは A-Z の1文字で入力してください。')
-      return
-    }
     if (labelOptions.includes(next)) {
       setError('同じラベルが既に存在します。')
       return
@@ -262,8 +258,8 @@ function SettingBox({ open, onClose, onSaved }: { open: boolean; onClose: () => 
         <div style={{ display: 'flex', gap: 8, marginBottom: 12 }}>
           <input
             value={newLabel}
-            onChange={e => setNewLabel(e.target.value.toUpperCase().slice(0, 1))}
-            placeholder="A-Z"
+            onChange={e => setNewLabel(e.target.value.toUpperCase().slice(0, 6))}
+            placeholder="6文字まで"
             style={{ width: 80, padding: 8 }}
           />
           <Button variant="outlined" onClick={addLabelOption} disabled={loading || saving}>
