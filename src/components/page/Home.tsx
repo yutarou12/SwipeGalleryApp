@@ -34,7 +34,7 @@ function LabelSelector({open, folder, onClose, labelOptions}: {open: boolean; fo
   useEffect(() => {
     if (!open) return
 
-    fetch(`http://api:8787/api/labels/${folder}`)
+    fetch(`/api/labels/${folder}`)
       .then(async r => {
         if (!r.ok) throw new Error(`GET /api/labels/${folder} failed: ${r.status}`)
         return r.json()
@@ -58,7 +58,7 @@ function LabelSelector({open, folder, onClose, labelOptions}: {open: boolean; fo
             onClick={async() => {
               try {
                 const next = labels[0] === label ? [] : [label]
-                const r = await fetch(`http://api:8787/api/labels/${folder}`, {
+                const r = await fetch(`/api/labels/${folder}`, {
                   method: "PUT",
                   headers: { "Content-Type": "application/json" },
                   body: JSON.stringify({ labels: next }),
@@ -191,9 +191,9 @@ function SettingBox({ open, onClose, onSaved }: { open: boolean; onClose: () => 
     setError(null)
     setMessage(null)
 
-    fetch('http://api:8787/api/label-options')
+    fetch('/api/label-options')
       .then(async r => {
-        if (!r.ok) throw new Error(`GET http://api:8787/api/label-options failed: ${r.status}`)
+        if (!r.ok) throw new Error(`GET /api/label-options failed: ${r.status}`)
         return r.json()
       })
       .then((data: unknown) => {
@@ -233,13 +233,13 @@ function SettingBox({ open, onClose, onSaved }: { open: boolean; onClose: () => 
     setError(null)
     setMessage(null)
     try {
-      const r = await fetch('http://api:8787/api/label-options', {
+      const r = await fetch('/api/label-options', {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ options: labelOptions })
       })
       if (!r.ok) {
-        throw new Error(`PUT http://api:8787/api/label-options failed: ${r.status}`)
+        throw new Error(`PUT /api/label-options failed: ${r.status}`)
       }
       setMessage('保存しました。')
       onSaved(labelOptions)
@@ -335,9 +335,9 @@ export default function Home() {
 
   const images = openFolder ? gallery[openFolder] || [] : []
   useEffect(() => {
-    fetch('http://api:8787/api/label-options')
+    fetch('/api/label-options')
       .then(async r => {
-        if (!r.ok) throw new Error(`GET http://api:8787/api/label-options failed: ${r.status}`)
+        if (!r.ok) throw new Error(`GET /api/label-options failed: ${r.status}`)
         return r.json()
       })
       .then((data: unknown) => {
